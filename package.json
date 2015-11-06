@@ -23,6 +23,6 @@
     "passport": ">= 0.0.0",
     "passport-facebook": ">= 0.0.0",
      "method-override": ">= 2.0.2",
-    "express-session": ">= 1.6.1",
+    "express-session": ">= 1.6.1"
   }
 }
