@@ -99,11 +99,19 @@ app.get('/auth/facebook',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/login' }),
+  passport.authenticate('facebook', { successRedirect: '/success',
+                                      failureRedirect: '/failure' }),
   function(req, res) {
     res.redirect('/');
   });
+
+app.get('/success', function(req, res) {
+  res.send('SUCCESS');
+});
+
+app.get('/failure', function(req, res) {
+  res.send('Connection failed !');
+});
 
 app.get('/logout', function(req, res){
   req.logout();
