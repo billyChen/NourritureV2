@@ -9,6 +9,10 @@ var express = require('express')
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override');
 
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk(' mongodb://root:123456@ds049624.mongolab.com:49624/nourriture');
+
 var FACEBOOK_APP_ID = "322980324492560";
 var FACEBOOK_APP_SECRET = "745cc0ed81f3de714e42d6fd086abff5";
 var GOOGLE_CLIENT_ID = "961840791432-kmmtn60o69622kgl2gsdia8d3kpdc6j4.apps.googleusercontent.com";
@@ -90,6 +94,11 @@ var app = express();
   app.use(passport.session());
   app.use(express.static(__dirname + '/public'));
 
+
+app.use(function(req,res,next){
+  req.db = db;
+  next();
+});
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -178,172 +187,104 @@ function ensureAuthenticated(req, res, next) {
 }
 
 
-// var express = require('express');
-// var path = require('path');
-// var favicon = require('serve-favicon');
-// var logger = require('morgan');
-// var cookieParser = require('cookie-parser');
-// var bodyParser = require('body-parser');
+// ************************************ INGREDIENTS ************************************
 
-// var mongo = require('mongodb');
-// var monk = require('monk');
-// var db = monk('localhost:27017/test');
+// List all ingredients
+app.get('/listIngredients', function(req, res) {
+  var db = req.db;
+  var collection = db.get('ingredients');
 
-// var routes = require('./routes/index');
-// var users = require('./routes/users');
-// var server = require('./routes/server')
+  collection.find({},{},function(e,docs){
+    console.log(docs);
+    res.end(JSON.stringify(docs));
+  });
+});
 
-// var app = express();
-// var fs = require("fs");
-// var util = require('util');
-// var session = require('express-session');
-// var passport = require('passport');
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// var methodOverride = require('method-override');
+// Add ingredients
+app.post('/addIngredients', function (req, res) {
+  var info = {'calories' : req.body.calories};
+  var db = req.db;
+  var collection = db.get('ingredients');
+  var obj = {};
 
-// var FACEBOOK_APP_ID = "497234817102475"
-// var FACEBOOK_APP_SECRET = "ace80a995d3306cf9cc7fd0bd339839d";
+  obj["ingredient"] = {'name': req.body.name, 'calories' : req.body.calories};
 
+  var _toInsert = obj;
+  console.log(JSON.stringify(obj));
 
-// // Passport session setup.
-// //   To support persistent login sessions, Passport needs to be able to
-// //   serialize users into and deserialize users out of the session.  Typically,
-// //   this will be as simple as storing the user ID when serializing, and finding
-// //   the user by ID when deserializing.  However, since this example does not
-// //   have a database of user records, the complete Facebook profile is serialized
-// //   and deserialized.
-// passport.serializeUser(function(user, done) {
-//   done(null, user);
-// });
+  collection.insert(_toInsert, function (err, doc) {
+    if (err) {
+      res.send('An error occured when adding an ingredients, please try again...');
+    }
+    else {
+      res.send('Sucess');
+    }
+  });
+});
 
-// passport.deserializeUser(function(obj, done) {
-//   done(null, obj);
-// });
+// Show ingredients
+app.get('/showIngredients/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('ingredients');
 
+  collection.find({"_id" : req.params.id},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
 
-// // Use the FacebookStrategy within Passport.
-// //   Strategies in Passport require a `verify` function, which accept
-// //   credentials (in this case, an accessToken, refreshToken, and Facebook
-// //   profile), and invoke a callback with a user object.
-// passport.use(new FacebookStrategy({
-//   clientID: FACEBOOK_APP_ID,
-//   clientSecret: FACEBOOK_APP_SECRET,
-//   callbackURL: "http://localhost:3000/auth/facebook/callback"
-// },
-// function(accessToken, refreshToken, profile, done) {
-//     // asynchronous verification, for effect...
-//     process.nextTick(function () {
+// Delete ingredients
+app.get('/deleteIngredients/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('ingredients');
 
-//       // To keep the example simple, the user's Facebook profile is returned to
-//       // represent the logged-in user.  In a typical application, you would want
-//       // to associate the Facebook account with a user record in your database,
-//       // and return that user instead.
-//       return done(null, profile);
-//     });
-//   }
-//   ));
+  collection.remove({"_id" : req.params.id},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
 
+// ************************************ RECIPES ************************************
 
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+// List all Recipes
+app.get('/listRecipes', function(req, res) {
+  var db = req.db;
+  var collection = db.get('recipes');
 
-// // uncomment after placing your favicon in /public
-// //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(logger('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use(passport.initialize());
-// app.use(passport.session());
+  collection.find({},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
 
-// app.use(function(req,res,next){
-//   req.db = db;
-//   next();
-// });
+// Add Recipes
+app.post('/addRecipes', function (req, res) {
+  var db = req.db;
+  var collection = db.get('recipes');
+  var obj = {};
 
-// // app.use('/', routes);
-// // app.use('/users', users);
-// // app.use('/api', server);
+  collection.insert(req.body, function(err, result){
+    res.send(
+             (err === null) ? { msg: '' } : { msg: err }
+             );
+  });
+});
 
-// app.get('/', function(req, res){
-//   res.render('index', { user: req.user });
-// });
+// Show Recipes
+app.get('/showRecipes/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('recipes');
 
-// app.get('/account', ensureAuthenticated, function(req, res){
-//   res.render('account', { user: req.user });
-// });
+  collection.find({"_id" : req.params.id},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
 
-// app.get('/login', function(req, res){
-//   res.render('login', { user: req.user });
-// });
+// Delete Recipes
+app.get('/deleteRecipes/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('recipes');
 
-// // GET /auth/facebook
-// //   Use passport.authenticate() as route middleware to authenticate the
-// //   request.  The first step in Facebook authentication will involve
-// //   redirecting the user to facebook.com.  After authorization, Facebook will
-// //   redirect the user back to this application at /auth/facebook/callback
-// app.get('/auth/facebook',
-//   passport.authenticate('facebook'),
-//   function(req, res){
-//     // The request will be redirected to Facebook for authentication, so this
-//     // function will not be called.
-//   });
-
-// // GET /auth/facebook/callback
-// //   Use passport.authenticate() as route middleware to authenticate the
-// //   request.  If authentication fails, the user will be redirected back to the
-// //   login page.  Otherwise, the primary route function function will be called,
-// //   which, in this example, will redirect the user to the home page.
-// app.get('/auth/facebook/callback',
-//   passport.authenticate('facebook', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     res.redirect('/');
-//   });
-
-// app.get('/logout', function(req, res){
-//   req.logout();
-//   res.redirect('/');
-// });
-
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-
-// // error handlers
-
-// // development error handler
-// // will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//       message: err.message,
-//       error: err
-//     });
-//   });
-// }
-
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
-
-
-// app.listen(process.env.PORT || 5000);
-
-// function ensureAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) { return next(); }
-//   res.redirect('/login')
-// }
+  collection.remove({"_id" : req.params.id},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
 
 module.exports = app;
