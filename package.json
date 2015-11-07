@@ -22,6 +22,8 @@
     "serve-favicon": "~2.3.0",
     "passport": ">= 0.0.0",
     "passport-facebook": ">= 0.0.0",
+    "passport-twitter": "^1.0.3",
+    "passport-google-oauth": ">= 0.0.0",
      "method-override": ">= 2.0.2",
     "express-session": ">= 1.6.1"
   }
