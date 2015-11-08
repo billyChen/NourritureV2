@@ -24,7 +24,7 @@
     "passport-facebook": ">= 0.0.0",
     "passport-twitter": "^1.0.3",
     "passport-google-oauth": ">= 0.0.0",
-    "monk": ">= 0.0.0",
+    "monk": "https://github.com/vccabral/monk.git",
      "method-override": ">= 2.0.2",
     "express-session": ">= 1.6.1"
   }
