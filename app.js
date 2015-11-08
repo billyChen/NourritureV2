@@ -1,13 +1,13 @@
 var express = require('express')
-  , passport = require('passport')
-  , util = require('util')
-  , FacebookStrategy = require('passport-facebook').Strategy
-  , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
-  , logger = require('morgan')
-  , session = require('express-session')
-  , bodyParser = require("body-parser")
-  , cookieParser = require("cookie-parser")
-  , methodOverride = require('method-override');
+, passport = require('passport')
+, util = require('util')
+, FacebookStrategy = require('passport-facebook').Strategy
+, GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+, logger = require('morgan')
+, session = require('express-session')
+, bodyParser = require("body-parser")
+, cookieParser = require("cookie-parser")
+, methodOverride = require('method-override');
 
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -35,11 +35,11 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://nourritureapi.herokuapp.com/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
+  clientID: GOOGLE_CLIENT_ID,
+  clientSecret: GOOGLE_CLIENT_SECRET,
+  callbackURL: "https://nourritureapi.herokuapp.com/auth/google/callback"
+},
+function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
 
@@ -50,7 +50,7 @@ passport.use(new GoogleStrategy({
       return done(null, profile);
     });
   }
-));
+  ));
 
 
 // Use the FacebookStrategy within Passport.
@@ -58,11 +58,11 @@ passport.use(new GoogleStrategy({
 //   credentials (in this case, an accessToken, refreshToken, and Facebook
 //   profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "https://nourritureapi.herokuapp.com/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "https://nourritureapi.herokuapp.com/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
 
@@ -73,7 +73,7 @@ passport.use(new FacebookStrategy({
       return done(null, profile);
     });
   }
-));
+  ));
 
 
 
@@ -81,13 +81,13 @@ passport.use(new FacebookStrategy({
 var app = express();
 
 // configure Express
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(logger());
-  app.use(cookieParser());
-  app.use(bodyParser());
-  app.use(methodOverride());
-  app.use(session({ secret: 'keyboard cat' }));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(logger());
+app.use(cookieParser());
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(session({ secret: 'keyboard cat' }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
   app.use(passport.initialize());
@@ -95,22 +95,22 @@ var app = express();
   app.use(express.static(__dirname + '/public'));
 
 
-app.use(function(req,res,next){
-  req.db = db;
-  next();
-});
+  app.use(function(req,res,next){
+    req.db = db;
+    next();
+  });
 
-app.get('/', function(req, res){
-  res.render('index', { user: req.user });
-});
+  app.get('/', function(req, res){
+    res.render('index', { user: req.user });
+  });
 
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.user });
-});
+  app.get('/account', ensureAuthenticated, function(req, res){
+    res.render('account', { user: req.user });
+  });
 
-app.get('/login', function(req, res){
-  res.render('login', { user: req.user });
-});
+  app.get('/login', function(req, res){
+    res.render('login', { user: req.user });
+  });
 
 
 // GET /auth/google
@@ -119,8 +119,8 @@ app.get('/login', function(req, res){
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }),
-  function(req, res){
+        passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }),
+        function(req, res){
     // The request will be redirected to Google for authentication, so this
     // function will not be called.
   });
@@ -131,11 +131,11 @@ app.get('/auth/google',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/google/callback',
-  passport.authenticate('google', { successRedirect: '/success',
-                                    failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+        passport.authenticate('google', { successRedirect: '/success',
+                              failureRedirect: '/login' }),
+        function(req, res) {
+          res.redirect('/');
+        });
 
 // GET /auth/facebook
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -143,8 +143,8 @@ app.get('/auth/google/callback',
 //   redirecting the user to facebook.com.  After authorization, Facebook will
 //   redirect the user back to this application at /auth/facebook/callback
 app.get('/auth/facebook',
-  passport.authenticate('facebook'),
-  function(req, res){
+        passport.authenticate('facebook'),
+        function(req, res){
     // The request will be redirected to Facebook for authentication, so this
     // function will not be called.
   });
@@ -155,11 +155,11 @@ app.get('/auth/facebook',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/success',
-                                      failureRedirect: '/failure' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+        passport.authenticate('facebook', { successRedirect: '/success',
+                              failureRedirect: '/failure' }),
+        function(req, res) {
+          res.redirect('/');
+        });
 
 app.get('/success', function(req, res) {
   res.send('SUCCESS');
@@ -173,7 +173,7 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
- app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000);
 
 
 // Simple route middleware to ensure user is authenticated.
@@ -207,18 +207,10 @@ app.post('/addIngredients', function (req, res) {
   var collection = db.get('ingredients');
   var obj = {};
 
-  obj["ingredient"] = {'name': req.body.name, 'calories' : req.body.calories};
-
-  var _toInsert = obj;
-  console.log(JSON.stringify(obj));
-
-  collection.insert(_toInsert, function (err, doc) {
-    if (err) {
-      res.send('An error occured when adding an ingredients, please try again...');
-    }
-    else {
-      res.send('Sucess');
-    }
+  collection.insert(req.body, function(err, result){
+    res.send(
+             (err === null) ? { msg: 'Success' } : { msg: err }
+             );
   });
 });
 
@@ -285,6 +277,10 @@ app.get('/deleteRecipes/:id', function (req, res) {
   collection.remove({"_id" : req.params.id},{},function(e,docs){
     res.end(JSON.stringify(docs));
   });
+});
+
+app.get('/form_add_ingredients', function(req, res, next) {
+  res.render('form_add_ingredients');
 });
 
 module.exports = app;
