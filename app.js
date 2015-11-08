@@ -11,7 +11,7 @@ var express = require('express')
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk(' mongodb://root:123456@ds049624.mongolab.com:49624/nourriture');
+var db = monk('mongodb://root:123456@ds049624.mongolab.com:49624/nourriture');
 
 var FACEBOOK_APP_ID = "322980324492560";
 var FACEBOOK_APP_SECRET = "745cc0ed81f3de714e42d6fd086abff5";
