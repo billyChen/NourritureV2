@@ -286,8 +286,12 @@ app.get('/form_add_ingredients', function(req, res, next) {
 // ********************************** WEBSITE MAIN FEATURE **************************************
 
 app.post('/search', function (req, res, next) {
-console.log('HAHAHAHAHAHAHA');
-res.send('QQQQQQQQQQQQQQQQQQQQQQQQQ');
+  var db = req.db;
+  var collection = db.get('recipes');
+
+collection.find({'name' : /.*made.*/}, {}, function (e, docs) {
+  res.end(JSON.stringify(docs));
+});
 });
 
 module.exports = app;
