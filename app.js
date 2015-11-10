@@ -290,8 +290,13 @@ app.post('/search', function (req, res, next) {
   var collection = db.get('recipes');
   var search = req.body.search;
 
+  console.log('SEARCH: ');
+  console.log(search);
   collection.find({'name' : new RegExp(search)}, {}, function (e, docs) {
-    res.send(req);
+    console.log("===============================");
+    console.log(JSON.stringify(docs));
+    console.log("===============================");
+    res.end(JSON.stringify(docs));
   });
 });
 
