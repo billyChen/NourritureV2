@@ -1,0 +1,139 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Search result</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/home.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+
+    <!-- SEARCH NAVBAR
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Nourriture</a>--
+          <a href="PAGEACCUEIL" ><img class ="navbar-brand" src="/images/donut.png"/>
+        </div></a>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>-->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #82E500; opacity: 0.9;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" ><img class ="navbar-brand" src="/images/donut.png"/>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- SEARCH NAVBAR -->
+    <!--<div class="container-fluid">--
+        <div id="search" style="position: relative; margin-left: auto; margin-right: auto;">
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+        <!--</div>-->
+
+        <div class="container" style="background-color: #CECECE; width:100%;">
+          <!-- Example row of columns -->
+          <div class="row">
+
+            <!--<div class="jumbotron">-->
+            <div class="container">
+              <form action="/query_search" method="post">
+                <input type="text" name="q" />
+                <input type="submit" />
+              </form>
+
+
+            </div>
+          </div>
+
+          <br/>
+          <br/>
+          <hr>
+          <br />
+          <br />
+
+          <div class="container">
+
+          </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="/jquery/1.11.3/jquery-1.11.3.js"></script>
+
+    <script src="/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-3.3.5/docs/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap-3.3.5/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script>
+    (function($){
+      setInterval(function(){
+        $(".slideshow ul li:first-child").animate({"margin-left": -1200}, 700, function(){
+          $(this).css("margin-left",0).appendTo(".slideshow ul");
+        });
+      }, 3500);
+    })(jQuery);
+    </script>
+
+  </body>
+  </html>
+
