@@ -288,8 +288,9 @@ app.get('/form_add_ingredients', function(req, res, next) {
 app.post('/search', function (req, res, next) {
   var db = req.db;
   var collection = db.get('recipes');
+  var search = req.body.q;
 
-collection.find({'name' : /.*made.*/}, {}, function (e, docs) {
+collection.find({'name' : new RegExp(search)}, {}, function (e, docs) {
   res.end(JSON.stringify(docs));
 });
 });
