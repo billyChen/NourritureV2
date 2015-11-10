@@ -288,7 +288,7 @@ app.get('/form_add_ingredients', function(req, res, next) {
 app.post('/search', function (req, res, next) {
   var db = req.db;
   var collection = db.get('recipes');
-  var search = req.body.q;
+  var search = req.body.search;
 
   console.log("REQ BODY Q ========================>");
   console.log(search);
