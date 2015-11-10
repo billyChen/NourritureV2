@@ -283,4 +283,11 @@ app.get('/form_add_ingredients', function(req, res, next) {
   res.render('form_add_ingredients');
 });
 
+// ********************************** WEBSITE MAIN FEATURE **************************************
+
+app.post('/search', function (req, res, next) {
+console.log('HAHAHAHAHAHAHA');
+res.send('QQQQQQQQQQQQQQQQQQQQQQQQQ');
+});
+
 module.exports = app;
