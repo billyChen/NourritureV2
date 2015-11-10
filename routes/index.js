@@ -29,7 +29,7 @@ router.post('/query_search', function (req, res) {
       console.log("==============================BODY==============================")
       console.log(body);
     }
-    res.render('search_result');
+    res.send(body));
   });
 });
 
