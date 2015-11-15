@@ -430,4 +430,15 @@ app.post('/search', function (req, res, next) {
   });
 });
 
+app.post('/ensureAuth', function (req, res, next) {
+  var db = req.db;
+  var collection = db.get('users');
+
+  collection.find({'username' : req.body.username, 'password' : req.body.password},
+                  {},
+                  function (e, docs) {
+                      res.send(docs);
+                  });
+});
+
 module.exports = app;
