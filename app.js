@@ -458,7 +458,7 @@ app.get('/getAlternativeProducts', function (req, res) {
   });
 });
 
-app.get('/getSuitability/:id', function(req, res, next){
+app.post('/getSuitability', function(req, res, next){
   var db = req.db;
   var product = db.get('products');
   var obj = {};
