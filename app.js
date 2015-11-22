@@ -463,10 +463,11 @@ app.get('/getSuitability/:id', function(req, res, next){
   var product = db.get('products');
   var obj = {};
 
-  if (req.session['user']) {
-    var allergens = req.session['user'][0]['allergens'];
+  if (req.body._user && req.body._id) {
+    var user = req.body._user;
+    var allergens = user[0]['allergens'];
 
-    product.find({'_id' : req.params.id}, {}, function (err, docs) {
+    product.find({'_id' : req.body._id}, {}, function (err, docs) {
       var allergens_product = [];
       var _is_allergens = [];
 
@@ -480,7 +481,6 @@ app.get('/getSuitability/:id', function(req, res, next){
           _is_allergens.push(allergens[i]);
         }
       }
-
       res.send(_is_allergens);
     });
   }
