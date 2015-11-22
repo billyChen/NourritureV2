@@ -433,12 +433,59 @@ app.post('/search', function (req, res, next) {
 app.post('/ensureAuth', function (req, res, next) {
   var db = req.db;
   var collection = db.get('users');
+  var session;
 
   collection.find({'username' : req.body.username, 'password' : req.body.password},
                   {},
                   function (e, docs) {
-                      res.send(docs);
+                    res.send(docs);
                   });
 });
+
+app.get('/getAlternativeProducts', function (req, res) {
+  var sess;
+  var db = req.db;
+  var collection = db.get('products');
+
+  sess = req.session;
+  if (sess) {
+  }
+  else {
+
+  }
+  collection.find({"_id" : req.params.id},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
+
+app.get('/getSuitability/:id', function(req, res, next){
+  var db = req.db;
+  var product = db.get('products');
+  var obj = {};
+
+  if (req.session['user']) {
+    var allergens = req.session['user'][0]['allergens'];
+
+    product.find({'_id' : req.params.id}, {}, function (err, docs) {
+      var allergens_product = [];
+      var _is_allergens = [];
+
+      for (var i = 0; i < docs[0]['allergens'].length; i++) {
+        allergens_product.push(docs[0]['allergens'][i]['name']);
+      };
+
+      for (var i = 0; i < allergens.length; i++) {
+        if (allergens_product.indexOf(allergens[i]) > -1) {
+          console.log('in the array');
+          _is_allergens.push(allergens[i]);
+        }
+      }
+
+      res.send(_is_allergens);
+    });
+  }
+});
+
+
 
 module.exports = app;
