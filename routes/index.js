@@ -13,7 +13,7 @@ router.get('/nourriture', function(req, res, next){
 	res.render('nourriture', { title: 'Nourriture' });
 });
 
-router.get('/result', function (req, res) {
+router.get('/search', function (req, res) {
   res.render('search_result');
 });
 
