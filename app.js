@@ -326,6 +326,7 @@ app.post('/showProducts', function (req, res) {
   var ingredients = req.body.ingredients;
   var JSON_ingredients = [];
 
+  ingredients = ingredients.split();
   for (var i = 0; i < ingredients.length; i++) {
     var json_obj = {};
 
