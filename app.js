@@ -450,7 +450,7 @@ app.post('/getAlternativeProducts', function (req, res) {
   if (req.body._user) {
     var user = req.body._user;
     var preferences = user[0]['preferences'];
-    var random_preference = preferences[Math.floor(Math.random()*items.length)];
+    var random_preference = preferences[Math.floor(Math.random() * preferences.length)];
 
     res.send(random_preference);
     // console.log(random_preference);
