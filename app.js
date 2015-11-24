@@ -324,7 +324,7 @@ app.get('/showProductsByName/:name', function (req, res) {
   var db = req.db;
   var collection = db.get('products');
   var name = req.params.name;
-  removeDiacritics(name);
+  name = removeDiacritics(name);
   name = name.toLowerCase();
   collection.find({"name" : name },{},function(e,docs){
     res.end(JSON.stringify(docs));
