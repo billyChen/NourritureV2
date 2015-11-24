@@ -450,12 +450,14 @@ app.post('/getAlternativeProducts', function (req, res) {
   if (req.body._user) {
     var user = req.body._user;
     var preferences = user[0]['preferences'];
+    var random_preference = preferences[Math.floor(Math.random()*items.length)];
 
-    res.send(user[0]['preferences']);
+    res.send(random_preference);
+    // console.log(random_preference);
     // collection.find({'types' : random_preference}, {}, function (err, docs) {
 
     // });
-}
+  }
 });
 
 app.post('/getAlternativeProducts', function (req, res) {
@@ -473,7 +475,7 @@ app.post('/getAlternativeProducts', function (req, res) {
     // collection.find({'types' : random_preference}, {}, function (err, docs) {
 
     // });
-}
+  }
 });
 
 app.post('/getSuitability', function(req, res, next){
