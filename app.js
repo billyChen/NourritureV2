@@ -325,7 +325,7 @@ app.post('/showProducts', function (req, res) {
   var collection = db.get('products');
   var ingredients = req.body.ingredients;
 
-  collection.find({"ingredients" : { $all: [{"name" : ['milk', 'salt']}]}},{},function(e,docs){
+  collection.find({"ingredients" : { $all: [{"name" : ingredients}]}},{},function(e,docs){
     res.end(JSON.stringify(docs));
   });
 });
