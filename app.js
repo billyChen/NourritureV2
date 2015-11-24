@@ -318,6 +318,17 @@ app.get('/showProducts/:id', function (req, res) {
   });
 });
 
+app.get('/showProductsByName/:name', function (req, res) {
+  var db = req.db;
+  var collection = db.get('products');
+  var name = req.params.name;
+
+  name = name.toLowerCase();
+  collection.find({"name" : name },{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
+});
+
 // Delete Recipes
 app.get('/deleteProducts/:id', function (req, res) {
   var db = req.db;
