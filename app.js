@@ -325,10 +325,9 @@ app.post('/showProducts', function (req, res) {
   var collection = db.get('products');
   var ingredients = req.body.ingredients;
 
-  res.send(ingredients);
-  // collection.find({"ingredients" : { $all: ingredients}},{},function(e,docs){
-  //   res.end(JSON.stringify(docs));
-  // });
+  collection.find({"ingredients" : { $all: ingredients}},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
 });
 
 
