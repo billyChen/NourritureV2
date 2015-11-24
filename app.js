@@ -450,9 +450,9 @@ app.post('/getAlternativeProducts', function (req, res) {
   if (req.body._user) {
     var user = req.body._user;
     var preferences = user[0]['preferences'];
-    var random_preference = preferences[0];
+    // var random_preference = preferences[0];
 
-    res.send(random_preference);
+    res.send(user);
     // console.log(random_preference);
     // collection.find({'types' : random_preference}, {}, function (err, docs) {
 
