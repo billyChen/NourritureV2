@@ -315,7 +315,6 @@ app.get('/showProducts/:id', function (req, res) {
   var db = req.db;
   var collection = db.get('products');
 
-
   collection.find({"_id" : req.params.id},{},function(e,docs){
     res.end(JSON.stringify(docs));
   });
@@ -326,7 +325,7 @@ app.post('/showProducts', function (req, res) {
   var collection = db.get('products');
   var ingredients = req.body.ingredients;
 
-  collection.find({"ingredients.name" : { $all: ingredients}},{},function(e,docs){
+  collection.find({"ingredients" : { $all: ingredients}},{},function(e,docs){
     res.end(JSON.stringify(docs));
   });
 });
