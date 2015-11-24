@@ -450,6 +450,24 @@ app.post('/getAlternativeProducts', function (req, res) {
   if (req.body._user) {
     var user = req.body._user;
     var preferences = user[0]['preferences'];
+    var random_preference = preferences[0];
+
+    res.send(random_preference);
+    // console.log(random_preference);
+    // collection.find({'types' : random_preference}, {}, function (err, docs) {
+
+    // });
+  }
+});
+
+app.post('/getAlternativeProducts', function (req, res) {
+  var sess;
+  var db = req.db;
+  var collection = db.get('products');
+
+  if (req.body._user) {
+    var user = req.body._user;
+    var preferences = user[0]['preferences'];
     var random_preference = preferences[Math.floor(Math.random()*items.length)];
 
     res.send(random_preference);
