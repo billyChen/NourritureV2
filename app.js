@@ -333,10 +333,9 @@ app.post('/showProducts', function (req, res) {
     JSON_ingredients.push(json_obj);
   };
 
-  res.send(JSON_ingredients);
-  // collection.find({"ingredients" : { $all: [{"name" : 'milk'}, {"name" : 'salt'}]}},{},function(e,docs){
-  //   res.end(JSON.stringify(docs));
-  // });
+  collection.find({"ingredients" : { $all: JSON_ingredients}},{},function(e,docs){
+    res.end(JSON.stringify(docs));
+  });
 });
 
 
