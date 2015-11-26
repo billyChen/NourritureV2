@@ -261,6 +261,19 @@ app.post('/addRecipes', function (req, res) {
   });
 });
 
+// Update Recipes
+app.post('/updateRecipes', function (req, res) {
+  var db = req.db;
+  var collection = db.get('recipes');
+  var obj = {};
+
+  collection.update(req.body.id, req.body, function(err, result){
+    res.send(
+             (err === null) ? { msg: 'Update complete !' } : { msg: err }
+             );
+  });
+});
+
 // Show Recipes
 app.get('/showRecipes/:id', function (req, res) {
   var db = req.db;
