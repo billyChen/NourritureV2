@@ -267,11 +267,12 @@ app.post('/updateRecipes', function (req, res) {
   var collection = db.get('recipes');
   var obj = {};
 
-  collection.update(req.body.id, req.body, function(err, result){
-    res.send(
-             (err === null) ? { msg: 'Update complete !' } : { msg: err }
-             );
-  });
+  res.send(typeof req.body);
+  // collection.update(req.body.id, req.body, function(err, result){
+  //   res.send(
+  //            (err === null) ? { msg: 'Update complete !' } : { msg: err }
+  //            );
+  // });
 });
 
 // Show Recipes
