@@ -266,13 +266,14 @@ app.post('/updateRecipes', function (req, res) {
   var db = req.db;
   var collection = db.get('recipes');
   var obj = {};
+  var _id = req.body.id;
 
-  res.send(typeof req.body);
-  // collection.update(req.body.id, req.body, function(err, result){
-  //   res.send(
-  //            (err === null) ? { msg: 'Update complete !' } : { msg: err }
-  //            );
-  // });
+  delete req.body.id
+  collection.update(_id, req.body, function(err, result){
+    res.send(
+             (err === null) ? { msg: 'Update complete !' } : { msg: err }
+             );
+  });
 });
 
 // Show Recipes
