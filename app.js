@@ -485,7 +485,10 @@ app.post('/advancedSearchRecipes', function (req, res, next) {
   var search = req.body.search;
   var result = [];
 
-  collection.find({ $and: [{ "country": "france"}, {"cost": "5"}]}, {}, function (e, docs) {
+  collection.find({ $and: [{ "country": req.body.country},
+                           {"cost": {$gte: req.body.cost1, $lte: req.body.cost2} },
+                           {"name": { $in: req.body.name }}
+                           ]}, {}, function (e, docs) {
     res.end(JSON.stringify(docs));
   });
 });
