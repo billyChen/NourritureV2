@@ -479,6 +479,17 @@ app.post('/search', function (req, res, next) {
   });
 });
 
+app.post('/advancedSearchRecipes', function (req, res, next) {
+  var db = req.db;
+  var collection = db.get('recipes');
+  var search = req.body.search;
+  var result = [];
+
+  collection.find({ $and: [{ "country": "france"}, {"cost": "5"}]}, {}, function (e, docs) {
+    res.end(JSON.stringify(docs));
+  });
+});
+
 app.post('/ensureAuth', function (req, res, next) {
   var db = req.db;
   var collection = db.get('users');
