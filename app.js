@@ -7,7 +7,8 @@ var express = require('express')
 , session = require('express-session')
 , bodyParser = require("body-parser")
 , cookieParser = require("cookie-parser")
-, methodOverride = require('method-override');
+, methodOverride = require('method-override')
+, OpenIDStrategy = require('passport-openid').Strategy;
 
 var mongo = require('mongodb');
 var monk = require('monk');
