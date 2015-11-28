@@ -484,11 +484,24 @@ app.post('/advancedSearchRecipes', function (req, res, next) {
   var collection = db.get('recipes');
   var search = req.body.search;
   var result = [];
+  var ingredients = req.body.ingredients;
+  var JSON_ingredients = [];
+
+  if (typeof ingredients === 'string' ) {
+    ingredients = ingredients.split();
+  }
+  for (var i = 0; i < ingredients.length; i++) {
+    var json_obj = {};
+
+    json_obj['name'] = ingredients[i];
+    JSON_ingredients.push(json_obj);
+  };
 
   collection.find({ $and: [{ "country": req.body.country},
                            {"cost": {$gte: parseInt(req.body.cost1), $lte: parseInt(req.body.cost2)} },
                            {'name' : new RegExp(req.body.name)},
-                           {"calories": {$gte: parseInt(req.body.calories1), $lte: parseInt(req.body.calories2)}}
+                           {"calories": {$gte: parseInt(req.body.calories1), $lte: parseInt(req.body.calories2)}},
+                           {"ingredients" : { $all: JSON_ingredients}}
                           ]
                   }, {}, function (e, docs) {
     res.end(JSON.stringify(docs));
