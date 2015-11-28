@@ -487,7 +487,8 @@ app.post('/advancedSearchRecipes', function (req, res, next) {
 
   collection.find({ $and: [{ "country": req.body.country},
                            {"cost": {$gte: parseInt(req.body.cost1), $lte: parseInt(req.body.cost2)} },
-                           {'name' : new RegExp(req.body.name)}
+                           {'name' : new RegExp(req.body.name)},
+                           {"calories": {$gte: parseInt(req.body.calories1), $lte: parseInt(req.body.calories2)}}
                           ]
                   }, {}, function (e, docs) {
     res.end(JSON.stringify(docs));
