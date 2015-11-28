@@ -36,6 +36,23 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+passport.use(new OpenIDStrategy({
+    returnURL: 'http://localhost:3000/auth/openid/return',
+    realm: 'http://localhost:3000/'
+  },
+  function(identifier, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // To keep the example simple, the user's OpenID identifier is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the OpenID identifier with a user record in your database,
+      // and return that user instead.
+      return done(null, { identifier: identifier })
+    });
+  }
+));
+
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
@@ -112,6 +129,29 @@ app.use(session({ secret: 'keyboard cat' }));
 
   app.get('/login', function(req, res){
     res.render('login', { user: req.user });
+  });
+
+/ POST /auth/openid
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in OpenID authentication will involve redirecting
+//   the user to their OpenID provider.  After authenticating, the OpenID
+//   provider will redirect the user back to this application at
+//   /auth/openid/return
+app.post('/auth/openid',
+  passport.authenticate('openid', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+// GET /auth/openid/return
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/auth/openid/return',
+  passport.authenticate('openid', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
   });
 
 
