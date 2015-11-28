@@ -131,7 +131,6 @@ app.use(session({ secret: 'keyboard cat' }));
     res.render('login', { user: req.user });
   });
 
-/ POST /auth/openid
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in OpenID authentication will involve redirecting
 //   the user to their OpenID provider.  After authenticating, the OpenID
