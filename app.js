@@ -38,8 +38,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new OpenIDStrategy({
-    returnURL: 'http://localhost:3000/auth/openid/return',
-    realm: 'http://localhost:3000/'
+    returnURL: 'https://nourritureapi.herokuapp.com/auth/openid/return',
+    realm: 'https://nourritureapi.herokuapp.com'
   },
   function(identifier, done) {
     // asynchronous verification, for effect...
