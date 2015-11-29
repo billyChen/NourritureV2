@@ -65,26 +65,24 @@ function(accessToken, refreshToken, profile, done) {
   process.nextTick(function () {
     var collection = db.get('recipes');
 
-    collection.find({'_facebook_id': profile.id}, {}, function (e, user) {
-      if (user)
+    collection.find({'_facebook_id': profile.id}, {}, function (e, user)
+    {
+     request.post(
+     {
+      url: 'http://nourritureapi.herokuapp.com/addUsers',
+      method: 'POST',
+      form:
       {
-        return done(null, user);
+        _facebook_id: profile.id,
+        _access_token: accessToken,
+        username: profile.name.givenName + ' ' + profile.name.familyName,
+        email: profile.emails[0].value
       }
-      else
-      {
-       request.post({
-        url: 'http://nourritureapi.herokuapp.com/addUsers',
-        method: 'POST',
-        form: {
-          _facebook_id: profile.id,
-          _access_token: accessToken,
-          username: profile.name.givenName + ' ' + profile.name.familyName,
-          email: profile.emails[0].value
-        }
-      }, function (error, response, body) {
-        return done(null, profile);
-      });
-     }
+    },
+    function (error, response, body)
+    {
+      return done(null, profile);
+    });
    });
   });
 }
