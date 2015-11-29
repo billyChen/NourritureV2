@@ -41,9 +41,6 @@ passport.use(new FacebookTokenStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET
   }, function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({facebookId: profile.id}, function (error, user) {
-      return done(error, user);
-    });
   }
 ));
 
@@ -79,7 +76,7 @@ passport.use(new FacebookStrategy({
 function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-
+alert('ok');
       // To keep the example simple, the user's Facebook profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the Facebook account with a user record in your database,
