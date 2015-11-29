@@ -68,16 +68,17 @@ function(accessToken, refreshToken, profile, done) {
 
     collection.find({'_facebook_id': profile.id}, {}, function (e, user)
     {
+
      request.post(
      {
       url: 'http://nourritureapi.herokuapp.com/addUsers',
       method: 'POST',
       form:
       {
-        _facebook_id: profile.id,
         _access_token: accessToken,
-        profile: profile
-        }
+        profile: profile,
+        user: user
+      }
     },
     function (error, response, body)
     {
