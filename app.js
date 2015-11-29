@@ -2,13 +2,13 @@ var express = require('express')
 , passport = require('passport')
 , util = require('util')
 , FacebookStrategy = require('passport-facebook').Strategy
+, FacebookTokenStrategy = require('passport-facebook-token')
 , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 , logger = require('morgan')
 , session = require('express-session')
 , bodyParser = require("body-parser")
 , cookieParser = require("cookie-parser")
-, methodOverride = require('method-override')
-, OpenIDStrategy = require('passport-openid').Strategy;
+, methodOverride = require('method-override');
 
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -37,19 +37,12 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new OpenIDStrategy({
-    returnURL: 'https://nourritureapi.herokuapp.com/auth/openid/return',
-    realm: 'https://nourritureapi.herokuapp.com'
-  },
-  function(identifier, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-
-      // To keep the example simple, the user's OpenID identifier is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the OpenID identifier with a user record in your database,
-      // and return that user instead.
-      return done(null, { identifier: identifier })
+passport.use(new FacebookTokenStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET
+  }, function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({facebookId: profile.id}, function (error, user) {
+      return done(error, user);
     });
   }
 ));
@@ -71,6 +64,7 @@ function(accessToken, refreshToken, profile, done) {
     });
   }
   ));
+
 
 
 // Use the FacebookStrategy within Passport.
@@ -132,27 +126,13 @@ app.use(session({ secret: 'keyboard cat' }));
     res.render('login', { user: req.user });
   });
 
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in OpenID authentication will involve redirecting
-//   the user to their OpenID provider.  After authenticating, the OpenID
-//   provider will redirect the user back to this application at
-//   /auth/openid/return
-app.post('/auth/openid',
-  passport.authenticate('openid', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
-
-// GET /auth/openid/return
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-app.get('/auth/openid/return',
-  passport.authenticate('openid', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+app.post('/auth/facebook/token',
+  passport.authenticate('facebook-token'),
+  function (req, res) {
+    // do something with req.user
+    res.send(req.user? 200 : 401);
+  }
+);
 
 
 // GET /auth/google
