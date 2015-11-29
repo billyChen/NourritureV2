@@ -76,8 +76,7 @@ function(accessToken, refreshToken, profile, done) {
       {
         _facebook_id: profile.id,
         _access_token: accessToken,
-        username: profile.name.givenName + ' ' + profile.name.familyName,
-        email: profile.emails[0].value
+        username: profile.name.givenName + ' ' + profile.name.familyName
       }
     },
     function (error, response, body)
