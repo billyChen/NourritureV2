@@ -46,10 +46,11 @@ passport.use(new GoogleStrategy({
   callbackURL: "https://nourritureapi.herokuapp.com/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
     process.nextTick(function () {
-      var collection = db.get('user');
+      var collection = db.get('recipes');
 
-      collection.find({'_google_id': profile.id}, {}, function (e, user)
+      collection.find({'_facebook_id': profile.id}, {}, function (e, user)
       {
         if (user)
         {
@@ -72,12 +73,11 @@ function(accessToken, refreshToken, profile, done) {
         {
           return done(null, profile);
         });
-
        }
      });
-    }
-    )
-  });
+    });
+  }
+  ));
 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
@@ -86,7 +86,7 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
   process.nextTick(function () {
-    var collection = db.get('user');
+    var collection = db.get('recipes');
 
     collection.find({'_facebook_id': profile.id}, {}, function (e, user)
     {
