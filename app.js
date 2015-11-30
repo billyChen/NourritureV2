@@ -46,16 +46,37 @@ passport.use(new GoogleStrategy({
   callbackURL: "https://nourritureapi.herokuapp.com/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
     process.nextTick(function () {
-      // To keep the example simple, the user's Google profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Google account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
-  }
-  ));
+      var collection = db.get('user');
+
+      collection.find({'_google_id': profile.id}, {}, function (e, user)
+      {
+        if (user)
+        {
+          return done(null, user);
+        }
+        else
+        {
+
+         request.post(
+         {
+          url: 'http://nourritureapi.herokuapp.com/addUsers',
+          method: 'POST',
+          form:
+          {
+            _access_token: accessToken,
+            profile: profile,
+          }
+        },
+        function (error, response, body)
+        {
+          return done(null, profile);
+        });
+
+       }
+     });
+    }
+    ));
 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
@@ -64,26 +85,33 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
   process.nextTick(function () {
-    var collection = db.get('recipes');
+    var collection = db.get('user');
 
     collection.find({'_facebook_id': profile.id}, {}, function (e, user)
     {
-
-     request.post(
-     {
-      url: 'http://nourritureapi.herokuapp.com/addUsers',
-      method: 'POST',
-      form:
+      if (user)
       {
-        _access_token: accessToken,
-        profile: profile,
-        user: user
+        return done(null, user);
       }
-    },
-    function (error, response, body)
-    {
-      return done(null, profile);
-    });
+      else
+      {
+
+       request.post(
+       {
+        url: 'http://nourritureapi.herokuapp.com/addUsers',
+        method: 'POST',
+        form:
+        {
+          _access_token: accessToken,
+          profile: profile,
+        }
+      },
+      function (error, response, body)
+      {
+        return done(null, profile);
+      });
+
+     }
    });
   });
 }
