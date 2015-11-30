@@ -76,7 +76,8 @@ function(accessToken, refreshToken, profile, done) {
        }
      });
     }
-    ));
+    )
+  });
 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
