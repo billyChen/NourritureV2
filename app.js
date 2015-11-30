@@ -48,9 +48,9 @@ passport.use(new GoogleStrategy({
 function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      var collection = db.get('recipes');
+      var collection = db.get('user');
 
-      collection.find({'_facebook_id': profile.id}, {}, function (e, user)
+      collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
         if (user)
         {
@@ -67,6 +67,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
+            user: user
           }
         },
         function (error, response, body)
