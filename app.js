@@ -48,16 +48,10 @@ passport.use(new GoogleStrategy({
 function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      var collection = db.get('user');
+      var collection = db.get('users');
 
       collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
-        if (user)
-        {
-          return done(null, user);
-        }
-        else
-        {
          request.post(
          {
           url: 'http://nourritureapi.herokuapp.com/addUsers',
@@ -73,7 +67,6 @@ function(accessToken, refreshToken, profile, done) {
         {
           return done(null, profile);
         });
-       }
      });
     });
   }
@@ -86,7 +79,7 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
   process.nextTick(function () {
-    var collection = db.get('recipes');
+    var collection = db.get('users');
 
     collection.find({'_facebook_id': profile.id}, {}, function (e, user)
     {
