@@ -52,6 +52,10 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
+        if (user) {
+          return done(null, user);
+        }
+        else {
          request.post(
          {
           url: 'http://nourritureapi.herokuapp.com/addUsers',
@@ -67,6 +71,7 @@ function(accessToken, refreshToken, profile, done) {
         {
           return done(null, profile);
         });
+       }
      });
     });
   }
