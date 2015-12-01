@@ -54,6 +54,9 @@ function(accessToken, refreshToken, profile, done) {
       {
         if (isEmpty(user) === false)
         {
+          return done(null, user);
+        }
+        else {
          request.post(
          {
           url: 'http://nourritureapi.herokuapp.com/addUsers',
@@ -61,25 +64,7 @@ function(accessToken, refreshToken, profile, done) {
           form:
           {
             _access_token: accessToken,
-            profile: profile,
-            user: 'CET USER EXISTE [' + isEmpty(user) + ']'
-          }
-        },
-        function (error, response, body)
-        {
-          return done(null, profile);
-        });
-       }
-       else {
-         request.post(
-         {
-          url: 'http://nourritureapi.herokuapp.com/addUsers',
-          method: 'POST',
-          form:
-          {
-            _access_token: accessToken,
-            profile: profile,
-            user: 'CET USER EXISTE PAS[' + typeof user + ']'
+            profile: profile
           }
         },
         function (error, response, body)
@@ -90,8 +75,8 @@ function(accessToken, refreshToken, profile, done) {
        }
      });
     });
-}
-));
+  }
+  ));
 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
