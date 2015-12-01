@@ -154,10 +154,10 @@ app.get('/auth/google',
         });
 
 app.get('/auth/google/callback',
-        passport.authenticate('google',
-                              {failureRedirect: '/login' }),
+        passport.authenticate('google', { successRedirect: '/success',
+                              failureRedirect: '/login' }),
         function(req, res) {
-          res.redirect('/', {req: req});
+          res.redirect('/');
         });
 
 
