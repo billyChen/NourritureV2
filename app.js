@@ -52,28 +52,20 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
-        console.log(user);
-        if (user && user !== true)
+       request.post(
+       {
+        url: 'http://nourritureapi.herokuapp.com/addUsers',
+        method: 'POST',
+        form:
         {
-          return done(null, user);
+          _access_token: accessToken,
+          profile: profile,
         }
-        else
-        {
-         request.post(
-         {
-          url: 'http://nourritureapi.herokuapp.com/addUsers',
-          method: 'POST',
-          form:
-          {
-            _access_token: accessToken,
-            profile: profile,
-          }
-        },
-        function (error, response, body)
-        {
-          return done(null, profile);
-        });
-       }
+      },
+      function (error, response, body)
+      {
+        return done(null, profile);
+      });
      });
     });
   }
