@@ -180,7 +180,7 @@ app.get('/auth/facebook/callback',
         });
 
 app.get('/success', function(req, res) {
-  res.send(req);
+  res.send(JSON.stringify(req));
 });
 
 app.get('/failure', function(req, res) {
