@@ -52,7 +52,7 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'profile.id': profile.id}, {}, function (e, user)
       {
-        if (user)
+        if (user.keys({}).length !== 0)
         {
          request.post(
          {
