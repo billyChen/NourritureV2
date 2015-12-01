@@ -62,7 +62,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
-            user: 'CET USER EXISTE [' + typeof user + ']'
+            user: 'CET USER EXISTE [' + user.keys({}).length + ']'
           }
         },
         function (error, response, body)
