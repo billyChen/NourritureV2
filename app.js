@@ -52,6 +52,7 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
+        console.log(user);
         if (user && user !== true)
         {
           return done(null, user);
@@ -180,7 +181,7 @@ app.get('/auth/facebook/callback',
         });
 
 app.get('/success', function(req, res) {
-  console.log(JSON.stringify(req.body));
+  res.send('SUCCESS');
 });
 
 app.get('/failure', function(req, res) {
