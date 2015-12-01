@@ -50,24 +50,44 @@ function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       var collection = db.get('users');
 
-      collection.find({'_google_id': profile.id}, {}, function (e, user)
+      collection.find({'profile.id': profile.id}, {}, function (e, user)
       {
-       request.post(
-       {
-        url: 'http://nourritureapi.herokuapp.com/addUsers',
-        method: 'POST',
-        form:
+        if (user)
         {
-          _access_token: accessToken,
-          profile: profile,
-          user: user
-        }
-      },
-      function (error, response, body)
-      {
-        return done(null, profile);
-      });
+         request.post(
+         {
+          url: 'http://nourritureapi.herokuapp.com/addUsers',
+          method: 'POST',
+          form:
+          {
+            _access_token: accessToken,
+            profile: profile,
+            user: 'CET USER EXISTE DEJA'
+          }
+        },
+        function (error, response, body)
+        {
+          return done(null, profile);
+        });
+       }
+       else {
+         request.post(
+         {
+          url: 'http://nourritureapi.herokuapp.com/addUsers',
+          method: 'POST',
+          form:
+          {
+            _access_token: accessToken,
+            profile: profile,
+            user: 'CET USER EXISTE PAS'
+          }
+        },
+        function (error, response, body)
+        {
+          return done(null, profile);
+        });
 
+       }
      });
     });
   }
