@@ -52,7 +52,7 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'_google_id': profile.id}, {}, function (e, user)
       {
-        if (user && user !== true)
+        if (user !== true)
         {
           return done(null, user);
         }
