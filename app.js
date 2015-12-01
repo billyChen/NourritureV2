@@ -62,7 +62,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
-            user: 'CET USER EXISTE [' + user + ']'
+            user: 'CET USER EXISTE [' + isEmpty(user) + ']'
           }
         },
         function (error, response, body)
@@ -214,8 +214,8 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function isEmpty(obj) {
-  for(var prop in obj) {
-    if(obj.hasOwnProperty(prop))
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop))
       return false;
   }
 
