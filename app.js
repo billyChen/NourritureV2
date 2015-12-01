@@ -62,7 +62,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
-            user: 'CET USER EXISTE DEJA'
+            user: 'CET USER EXISTE [' + user + ']'
           }
         },
         function (error, response, body)
@@ -79,7 +79,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
-            user: 'CET USER EXISTE PAS'
+            user: 'CET USER EXISTE PAS[' + user + ']'
           }
         },
         function (error, response, body)
