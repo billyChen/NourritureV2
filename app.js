@@ -59,7 +59,8 @@ function(accessToken, refreshToken, profile, done) {
         form:
         {
           _access_token: accessToken,
-          profile: profile
+          profile: profile,
+          user: user
         }
       },
       function (error, response, body)
