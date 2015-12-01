@@ -59,13 +59,14 @@ function(accessToken, refreshToken, profile, done) {
         form:
         {
           _access_token: accessToken,
-          profile: profile,
+          profile: profile
         }
       },
       function (error, response, body)
       {
         return done(null, profile);
       });
+
      });
     });
   }
