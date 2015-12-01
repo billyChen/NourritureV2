@@ -52,7 +52,7 @@ function(accessToken, refreshToken, profile, done) {
 
       collection.find({'profile.id': profile.id}, {}, function (e, user)
       {
-        if (user.keys({}).length !== 0)
+        if (isEmpty(user) === false)
         {
          request.post(
          {
@@ -62,7 +62,7 @@ function(accessToken, refreshToken, profile, done) {
           {
             _access_token: accessToken,
             profile: profile,
-            user: 'CET USER EXISTE [' + user.keys({}).length + ']'
+            user: 'CET USER EXISTE [' + user + ']'
           }
         },
         function (error, response, body)
@@ -90,8 +90,8 @@ function(accessToken, refreshToken, profile, done) {
        }
      });
     });
-  }
-  ));
+}
+));
 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
@@ -211,6 +211,15 @@ app.listen(process.env.PORT || 5000);
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
+}
+
+function isEmpty(obj) {
+  for(var prop in obj) {
+    if(obj.hasOwnProperty(prop))
+      return false;
+  }
+
+  return true;
 }
 
 // ************************************ INGREDIENTS ************************************
