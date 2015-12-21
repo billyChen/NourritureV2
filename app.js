@@ -462,7 +462,7 @@ app.post('/addUsers', function (req, res) {
              );
   });
 });
-
+ƒ
 // Show products
 app.get('/showUsers/:id', function (req, res) {
   var db = req.db;
@@ -507,6 +507,9 @@ app.post('/advancedSearchRecipes', function (req, res, next) {
 
   if (typeof ingredients === 'string' ) {
     ingredients = ingredients.split();
+  }
+  if (typeof ingredients === 'undefined') {
+    ingredients = [];
   }
   for (var i = 0; i < ingredients.length; i++) {
     var json_obj = {};
