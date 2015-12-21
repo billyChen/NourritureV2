@@ -462,7 +462,7 @@ app.post('/addUsers', function (req, res) {
              );
   });
 });
-ƒ
+
 // Show products
 app.get('/showUsers/:id', function (req, res) {
   var db = req.db;
