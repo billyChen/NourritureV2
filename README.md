@@ -1,1 +1,2 @@
-# NourritureV2
+# Nourriture
+Nourriture project - BJTU 2015
