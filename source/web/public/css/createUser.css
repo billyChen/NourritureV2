@@ -1,0 +1,53 @@
+.tokenize-sample { width: 300px }
+
+.spacing {
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.middlePage {
+  width: 680px;
+  height: 500px;
+  position: absolute;
+  padding-top: 5%;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.logo {
+	color:#CCC;
+}
+
+.panel-body {
+  height: 500px;
+}
+
+.field {
+  margin-top: 1em;
+  width: 100%;
+}
+
+input[type=radio] {
+ background-color:transparent;
+ border:none;
+ width:10px;
+ }
+
+input[type=textinput] {
+   margin-right: 30%;
+}
+
+ .button {
+  /* To position the buttons to the same position of the text fields */
+  /*padding-left: 95px; /* same size as the label elements */
+  padding-left: 70%;
+  margin-top: 1em;
+}
+
+button {
+  /* This extra magin represent the same space as the space between
+     the labels and their text fields */
+  margin-left: .5em;
+}

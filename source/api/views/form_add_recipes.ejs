@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nourriture </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <%- include header.ejs %>
+  <div class="container-fluid">
+    <section class="row">
+      <div class="">
+        <form action="/api/addRecipes" method="post">
+          <label for="">Nom: </label>
+          <input type="text" name="name" />
+
+          <label for="">Ingr1: </label>
+          <input type="text" name="ingredient" />
+          <label for="">Quantity1: </label>
+          <input type="text" name="ingredient[quantity]" />
+
+          <label for="">Ingr2: </label>
+          <input type="text" name="ingredient" />
+          <label for="">Quantity2: </label>
+          <input type="text" name="ingredient[quantity]" />
+
+          <label for="">Ingr3: </label>
+          <input type="text" name="ingredient" />
+          <label for="">Quantity3: </label>
+          <input type="text" name="ingredient[quantity]" />
+
+          <label for="">Calorie: </label>
+          <input type="text" name="calories" />
+
+          <input type="submit" />
+        </form>
+      </div>
+    </section>
+  </div> <!-- container-fluid -->
+</body>
+</html>
