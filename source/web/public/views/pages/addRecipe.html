@@ -1,0 +1,75 @@
+<link href="css/form.css" rel="stylesheet">
+
+	<style>
+    #slider {
+      display: none;
+    }
+  </style>
+
+  <!--<div class="jumbotron text-center">
+		<h1>Add Recipe Page</h1>
+		<p> {{ addRecipe.message }} </p>
+	</div>-->
+
+	<div style="padding-top: 8%;">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-2 col-lg-2">
+            </div>
+            
+            <div class="col-sm-9 col-lg-9">
+              <div class="dash-unit">
+
+                <form action="#" method="post">
+                   <h1 style="text-align: center;">Add your recipe !!!</h1>
+                   <br>
+                    <div class="field">
+                      <label for="title">Title :</label>
+                      <input type="text" class="name">
+                    </div>
+
+                    <div class="field">
+                      <label for="mail">Type :</label>
+                      <input type="text" class="name">
+                    </div>
+
+                    <div class="field">
+                      <input type="file" id="photo" name="photo">
+                    </div>
+
+                    <div class="field">
+                      <label for="ingredients">Ingredients :</label>
+                      <select name="ingredients">
+                        <option>Sugar</option>
+                        <option>Salt</option>
+                        <option>Milk</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="time">Time :</label>
+                      <select name="cookingTime">
+                        <option>0mn - 10mn</option>
+                        <option>10mn - 20mn</option>
+                        <option>30mn - 1h</option>
+                        <option> > 1h</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="msg">Description :</label>
+                      <textarea id="recipeField"></textarea>
+                    </div>
+                   
+                    <div class="button">
+                      <button type="submit">Save recipe</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+            
+            </div>
+        </div>
+      </div>
+
