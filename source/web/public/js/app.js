@@ -1,34 +1,6 @@
-/*angular.module('myApp', [])
-		.controller('mainController', function() {
-			var vm = this;
-			/*var vm.mydata = [];
-			var url = 'https://nourritureapi.herokuapp.com';
-
-		 $http.get(url)
-			 .then(function(result) {
-			 console.log(result);
-			 vm.mydata = result.data;*
-			 vm.message = "salut";
-			 console.log(vm.message);
-		 //});
-});*/
 
 
-angular.module('myApp', [])
-	.controller('mainController', function($http) {
-
-		var vm = this;
-
-		$http.get('https://nourritureapi.herokuapp.com/listUsers')
-			.then(function(data) {
-				vm.users = data.users;
-				console.log(data.users);
-			});
-		vm.message = "salut";
-	});
-
-
-/*angular.module('routerApp', ['routerRoutes', 'userService'])
+angular.module('routerApp', ['routerRoutes', 'userService', 'recipeService'])
 
 .controller('mainController', function() {
 	var vm = this;
@@ -43,23 +15,39 @@ angular.module('myApp', [])
 	vm.message = "This is the home page!";
 })
 
-.controller('addRecipeController', function() {
+.controller('popularController', function($scope, $http, recipeFactory) {
 	var vm = this;
 
-	vm.message = "add Recipe page";
+	vm.message = "All recipes";
+
+	$scope.cfdump = "";
+
+	var getRecipe = function(res) {
+		var i = 0;
+		var out = "";
+		//$scope.list = [];
+
+		for(i = 0; i < res.length; i++) {
+			out += 'name : ' + res[i].name + ' type : ' + res[i].type + '  ingredients : ' + res[i].ingredients + '  time : ' + res[i].time + '  description : ' + res[i].description + '	';
+			/*if (res[i].type == "dessert") {
+				//res[i].type = "TEST";
+				//console.log("YESSS");
+			}*/
+		}
+		vm.message = out;
+		console.log(out);
+	};
+
+	$scope.showRecipes = function() {
+		recipeFactory.all()
+		.success(function(data) {
+			vm.str = data;
+			//console.log(typeof(data));
+			getRecipe(data);
+		})
+	}
 })
 
-.controller('popularController', function() {
-	var vm = this;
-
-	vm.message = "Popular Page";
-})
-
-/*.controller('newsController', function() {
-	var vm = this;
-
-	vm.message = "News Page";
-})*
 
 .controller('aboutController', function() {
 	var vm = this;
@@ -79,32 +67,64 @@ angular.module('myApp', [])
 	vm.message = "Login Page";
 })
 
-.controller('createUserController', function() {
+.controller('createUserController', function($scope, $http, userFactory) {
 	var vm = this;
 
-	vm.message = "Create user page";
-});*/
+	$scope.cfdump = "";
+
+	$scope.test = function(Username, Password, Gender, Allergy) {
+		var request = $http({
+			method: "post",
+			url: "https://nourritureapi-v2.herokuapp.com/addUsers",
+			data: {
+				username: this.Username,
+				password: this.Password,
+				gender: this.Gender,
+				allergens: this.Allergy
+			}
+		}).success(function() {
+			$location.path('/logIn');
+			alert("User profil saved !");
+		})
+	};
+})
 
 
+.controller('addRecipeController', function($scope, $http, recipeFactory) {
 
-/*angular.module('myApp', ['userService'])
-	// create a controller and inject the User factory
-	.controller('userController', function(User) {
-	 	var vm = this;
-	  	vm.mydata = [];
+	var vm = this;
+	vm.message = "Save your recipe!";
+	$scope.cfdump = "";
 
+	$scope.add = function(Name, Type, Ingredients, Time, Description) {
 
-	  	// get all the stuff
-		User.all()
-	   
-	    // promise object
-		.success(function(data) {
-		
-		console.log(data);
-		// bind the data to a controller variable 
-		// this comes from the stuffService 
-		
-		//vm.message = data;
-		vm.mydata = data;
-	});
-});*/
+		var request = $http({
+			method: "post",
+			url: "https://nourritureapi-v2.herokuapp.com/addRecipes",
+			data: {
+				name: this.Name,
+				type: this.Type,
+				ingredients: this.Ingredients,
+				time: this.Time,
+				description: this.Description
+			}
+		}).success(function() {
+			vm.message = "Recipe saved";
+		})
+	};
+
+})
+
+.controller('userController', function($scope, $http/*, userFactory*/) {
+	var vm = this;
+
+	$scope.cfdump = "";
+
+		/*$scope.display = function() {
+			userFactory.all()
+			.success(function(data) {
+				vm.str = data;
+				console.log(data);
+			})
+		}*/
+});

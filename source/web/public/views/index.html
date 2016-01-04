@@ -55,16 +55,17 @@
 
     <!-- SERVICES -->
     <script src="js/userService.js"></script>
+    <script src="js/recipeService.js"></script>
+    <script src="js/authService.js"></script>
 
     <!-- For addRecipe page MAIS CONFLIT AVEC FOMRULAIRE NEWSLETTER ET CONTACT US -->
     <link href="/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 
-	<!--<body ng-app="routerApp" ng-controller="mainController as main">-->
-    <body ng-app="myApp" ng-controller="mainController as main">
-
-        <h1>TEST {{ main.message }} </h1>
+	<body ng-app="routerApp" ng-controller="mainController as main">
+    
+        <!--<h1 ng-controller="userController as user"> TEST {{ user.data }} </h1>-->
 
 	<!--
 	header-img start 
@@ -100,7 +101,7 @@
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
 
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                               <ul class="nav navbar-nav navbar-right">
                                 <!--<li><a href="#hero-area">Home</a></li>-->
                                 <li><a href="/">Home</a></li>
