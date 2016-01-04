@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:background="@color/light_orange">
+	    <com.project_training.nourriture.utils.MLRoundedImageView
+		    android:id="@+id/img_profile"
+		    android:layout_width="150dp"
+		    android:layout_height="150dp"
+		    android:layout_marginTop="25dp"
+		    android:layout_marginBottom="10dp"
+		    android:layout_gravity="center_horizontal"
+		    android:src="@drawable/default_img"/>  
+
+	   	<TextView
+	       	android:id="@+id/profile_fullname"
+	       	android:layout_width="wrap_content"
+	       	android:layout_height="wrap_content"
+	       	android:layout_gravity="center_horizontal"
+	       	android:text="Azertyuiop"
+	       	android:textColor="@color/grey"
+	       	android:textSize="20sp"
+	       	android:textStyle="bold" />
+   	</LinearLayout>  
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:orientation="vertical">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/my_moments"
+            android:textSize="25dp"
+            android:textColor="@color/grey"
+            android:textStyle="bold"/>
+        <ListView 
+            android:id="@+id/moments_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/my_recipes"
+            android:textSize="25dp"
+            android:textColor="@color/grey"
+            android:textStyle="bold"/>
+        <ListView 
+            android:id="@+id/my_recipes_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <TextView 
+            android:id="@+id/my_parameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/parameters"
+            android:textSize="20dp"
+            android:textColor="@color/grey"/>
+        
+	</LinearLayout>
+    
+</LinearLayout>

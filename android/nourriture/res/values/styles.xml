@@ -1,0 +1,78 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="AppTheme.AppCompatTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:typeface">normal</item>        
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="android:editTextStyle">@style/AppTheme.EditText</item>
+		<item name="android:radioButtonStyle">@style/AppTheme.RadioButton</item>
+		<item name="android:listViewStyle">@style/AppTheme.ListView</item>
+        <item name="actionMenuTextColor">@color/grey</item>
+        <item name="android:actionMenuTextColor">@color/grey</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/selector_drawer_list</item>
+        <item name="android:rating">@style/AppTheme.RatingBar</item>
+    </style>
+
+    
+    <style name="AppTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+<!--         <item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleText</item> -->
+        <item name="android:background">@drawable/layer_style_actionbar</item>
+        <item name="background">@drawable/layer_style_actionbar</item>
+        <item name="android:height">@dimen/bar_height</item>
+        <item name="height">@dimen/bar_height</item>
+    </style>
+    
+    <style name="AppTheme.RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/layer_style_ratingbar</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:minWidth">16dip</item>
+    </style>
+    
+    <style name="AppTheme.ProgressDialog" parent="@android:style/Theme.DeviceDefault.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/orange</item>
+    </style>
+    
+    <style name="AppTheme.EditText" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:background">@drawable/layer_list_custom_edittext</item>
+    </style>
+    
+    <style name="AppTheme.RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    
+    <style name="AppTheme.ListView" parent="@android:style/Widget.ListView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:divider">@drawable/listview_divider</item>
+        <item name="android:dividerHeight">2dp</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:drawSelectorOnTop">false</item>
+    </style>
+    
+</resources>

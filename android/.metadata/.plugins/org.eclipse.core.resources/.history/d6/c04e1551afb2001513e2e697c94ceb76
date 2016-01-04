@@ -1,0 +1,24 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.products.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class ProductsListFragment$$ViewBinder<T extends com.project_training.nourriture.products.controller.ProductsListFragment> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361932, "field 'productsNotFound'");
+    target.productsNotFound = finder.castView(view, 2131361932, "field 'productsNotFound'");
+    view = finder.findRequiredView(source, 2131361799, "field 'progressCircular'");
+    target.progressCircular = finder.castView(view, 2131361799, "field 'progressCircular'");
+    view = finder.findRequiredView(source, 2131361922, "field 'lvProducts'");
+    target.lvProducts = finder.castView(view, 2131361922, "field 'lvProducts'");
+  }
+
+  @Override public void unbind(T target) {
+    target.productsNotFound = null;
+    target.progressCircular = null;
+    target.lvProducts = null;
+  }
+}

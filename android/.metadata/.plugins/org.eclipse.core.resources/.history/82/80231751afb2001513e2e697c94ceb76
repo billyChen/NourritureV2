@@ -1,0 +1,21 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.adapter;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class IngredientsAdapter$ViewHolder$$ViewBinder<T extends com.project_training.nourriture.adapter.IngredientsAdapter.ViewHolder> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361871, "field 'descIngredient'");
+    target.descIngredient = finder.castView(view, 2131361871, "field 'descIngredient'");
+    view = finder.findRequiredView(source, 2131361870, "field 'titleIngredient'");
+    target.titleIngredient = finder.castView(view, 2131361870, "field 'titleIngredient'");
+  }
+
+  @Override public void unbind(T target) {
+    target.descIngredient = null;
+    target.titleIngredient = null;
+  }
+}

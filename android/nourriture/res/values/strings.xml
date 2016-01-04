@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">nourriture</string>
+    
+    
+    <!-- User section -->
+    <string name="log_in">Log in</string>
+    <string name="log_out">Log out</string>
+    <string name="welcome">Welcome %s !</string>
+    
+    <!-- Toolbar -->
+    <string name="nourriture">Nourriture</string>
+    
+    <!-- Search -->
+    <string name="search_hint">Type here the recipes, products or ingredients you want to seek</string>
+    <string name="dish_type">Dish type :</string>
+    <string name="country_search">Country :</string>
+    <string name="calories">Calories :</string>
+    <string name="cost">Cost :</string>
+    <string name="difficulty">Difficulty :</string>
+    <string name="ingredient">Ingredient :</string>
+    
+    <!-- Search result -->
+    <string name="results_for">Results for :</string>
+    
+    <!-- Navigation menu -->
+    <string name="home">Home</string>
+    <string name="recipes">Recipes</string>
+    <string name="products">Products</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="my_account">My account</string>
+    
+    <string name="preparation">Preparation</string>
+    
+    <!-- Error message -->
+    <string name="ingredients_not_found">Ingredients not found :S</string>
+    <string name="recipes_not_found">Recipes not found :S</string>
+    <string name="products_not_found">Products not found :S</string>
+    
+    <!-- User -->
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">E-mail</string>
+    <string name="gender">Gender</string>
+    <string name="male">male</string>
+   	<string name="female">female</string>
+   	<string name="firstname">Firstname</string>
+   	<string name="lastname">Lastname</string>
+   	<string name="address">Address</string>
+   	<string name="postal_code">Postal code</string>
+   	<string name="city">City</string>
+   	<string name="country">Country</string>
+   	<string name="birthday">Birthday</string>
+   	
+   	<string name="profile_manager">Profile manager</string>
+   	<string name="my_moments">My moments</string>
+   	<string name="my_recipes">My recipes</string>
+   	<string name="parameters">Parameters</string>
+    
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_search">Search</string>
+
+    
+    <!-- Color -->
+    <color name="white">#FFFFFF</color>
+    <color name="light_orange">#EF6C00</color>
+    <color name="orange">#E65100</color>
+    <color name="light_grey">#BDBDBD</color>
+    <color name="grey">#424242</color>
+    <color name="dark_grey">#212121</color>
+    
+</resources>

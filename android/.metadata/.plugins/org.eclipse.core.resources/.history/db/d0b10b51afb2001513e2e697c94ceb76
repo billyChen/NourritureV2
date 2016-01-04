@@ -1,0 +1,60 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.search.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class SearchByCriteriaActivity$$ViewBinder<T extends com.project_training.nourriture.search.controller.SearchByCriteriaActivity> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361917, "field 'difficultyValue'");
+    target.difficultyValue = finder.castView(view, 2131361917, "field 'difficultyValue'");
+    view = finder.findRequiredView(source, 2131361914, "field 'calorieVolume'");
+    target.calorieVolume = finder.castView(view, 2131361914, "field 'calorieVolume'");
+    view = finder.findRequiredView(source, 2131361919, "field 'btnSearch'");
+    target.btnSearch = finder.castView(view, 2131361919, "field 'btnSearch'");
+    view = finder.findRequiredView(source, 2131361915, "field 'costValue'");
+    target.costValue = finder.castView(view, 2131361915, "field 'costValue'");
+    view = finder.findRequiredView(source, 2131361918, "field 'difficultyVolume'");
+    target.difficultyVolume = finder.castView(view, 2131361918, "field 'difficultyVolume'");
+    view = finder.findRequiredView(source, 2131361920, "field 'progressSearching'");
+    target.progressSearching = finder.castView(view, 2131361920, "field 'progressSearching'");
+    view = finder.findRequiredView(source, 2131361869, "field 'toolBar'");
+    target.toolBar = finder.castView(view, 2131361869, "field 'toolBar'");
+    view = finder.findRequiredView(source, 2131361799, "field 'progressCircular'");
+    target.progressCircular = finder.castView(view, 2131361799, "field 'progressCircular'");
+    view = finder.findRequiredView(source, 2131361913, "field 'calorieValue'");
+    target.calorieValue = finder.castView(view, 2131361913, "field 'calorieValue'");
+    view = finder.findRequiredView(source, 2131361908, "field 'searchLayout'");
+    target.searchLayout = finder.castView(view, 2131361908, "field 'searchLayout'");
+    view = finder.findRequiredView(source, 2131361916, "field 'costVolume'");
+    target.costVolume = finder.castView(view, 2131361916, "field 'costVolume'");
+    view = finder.findRequiredView(source, 2131361910, "field 'dishType'");
+    target.dishType = finder.castView(view, 2131361910, "field 'dishType'");
+    view = finder.findRequiredView(source, 2131361909, "field 'inputSearch'");
+    target.inputSearch = finder.castView(view, 2131361909, "field 'inputSearch'");
+    view = finder.findRequiredView(source, 2131361911, "field 'countrySpinner'");
+    target.countrySpinner = finder.castView(view, 2131361911, "field 'countrySpinner'");
+    view = finder.findRequiredView(source, 2131361912, "field 'ingredientSpinner'");
+    target.ingredientSpinner = finder.castView(view, 2131361912, "field 'ingredientSpinner'");
+  }
+
+  @Override public void unbind(T target) {
+    target.difficultyValue = null;
+    target.calorieVolume = null;
+    target.btnSearch = null;
+    target.costValue = null;
+    target.difficultyVolume = null;
+    target.progressSearching = null;
+    target.toolBar = null;
+    target.progressCircular = null;
+    target.calorieValue = null;
+    target.searchLayout = null;
+    target.costVolume = null;
+    target.dishType = null;
+    target.inputSearch = null;
+    target.countrySpinner = null;
+    target.ingredientSpinner = null;
+  }
+}

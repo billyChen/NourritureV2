@@ -1,0 +1,30 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.adapter;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class ProductsAdapter$ViewHolder$$ViewBinder<T extends com.project_training.nourriture.adapter.ProductsAdapter.ViewHolder> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361877, "field 'titleProduct'");
+    target.titleProduct = finder.castView(view, 2131361877, "field 'titleProduct'");
+    view = finder.findRequiredView(source, 2131361944, "field 'typeProduct'");
+    target.typeProduct = finder.castView(view, 2131361944, "field 'typeProduct'");
+    view = finder.findRequiredView(source, 2131361878, "field 'priceProduct'");
+    target.priceProduct = finder.castView(view, 2131361878, "field 'priceProduct'");
+    view = finder.findRequiredView(source, 2131361880, "field 'descriptionProduct'");
+    target.descriptionProduct = finder.castView(view, 2131361880, "field 'descriptionProduct'");
+    view = finder.findRequiredView(source, 2131361876, "field 'imgProduct'");
+    target.imgProduct = finder.castView(view, 2131361876, "field 'imgProduct'");
+  }
+
+  @Override public void unbind(T target) {
+    target.titleProduct = null;
+    target.typeProduct = null;
+    target.priceProduct = null;
+    target.descriptionProduct = null;
+    target.imgProduct = null;
+  }
+}

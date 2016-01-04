@@ -1,0 +1,27 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.ingredients.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class IngredientsListFragment$$ViewBinder<T extends com.project_training.nourriture.ingredients.controller.IngredientsListFragment> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361926, "field 'ingredientsNotFound'");
+    target.ingredientsNotFound = finder.castView(view, 2131361926, "field 'ingredientsNotFound'");
+    view = finder.findRequiredView(source, 2131361799, "field 'progressCircular'");
+    target.progressCircular = finder.castView(view, 2131361799, "field 'progressCircular'");
+    view = finder.findRequiredView(source, 2131361923, "field 'lvIngredients'");
+    target.lvIngredients = finder.castView(view, 2131361923, "field 'lvIngredients'");
+    view = finder.findRequiredView(source, 2131361927, "field 'refreshBtn'");
+    target.refreshBtn = finder.castView(view, 2131361927, "field 'refreshBtn'");
+  }
+
+  @Override public void unbind(T target) {
+    target.ingredientsNotFound = null;
+    target.progressCircular = null;
+    target.lvIngredients = null;
+    target.refreshBtn = null;
+  }
+}

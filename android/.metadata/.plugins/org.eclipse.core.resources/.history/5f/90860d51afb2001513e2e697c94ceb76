@@ -1,0 +1,27 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.search.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class SearchResultActivity$$ViewBinder<T extends com.project_training.nourriture.search.controller.SearchResultActivity> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361923, "field 'ingredientsList'");
+    target.ingredientsList = finder.castView(view, 2131361923, "field 'ingredientsList'");
+    view = finder.findRequiredView(source, 2131361869, "field 'toolBar'");
+    target.toolBar = finder.castView(view, 2131361869, "field 'toolBar'");
+    view = finder.findRequiredView(source, 2131361922, "field 'productsList'");
+    target.productsList = finder.castView(view, 2131361922, "field 'productsList'");
+    view = finder.findRequiredView(source, 2131361921, "field 'recipesList'");
+    target.recipesList = finder.castView(view, 2131361921, "field 'recipesList'");
+  }
+
+  @Override public void unbind(T target) {
+    target.ingredientsList = null;
+    target.toolBar = null;
+    target.productsList = null;
+    target.recipesList = null;
+  }
+}

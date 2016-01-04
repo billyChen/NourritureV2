@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_orange" >
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:padding="2dp"
+        android:gravity="center_horizontal"
+        android:background="@color/orange"/>
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="15dp"
+	    android:orientation="horizontal">
+	    <RelativeLayout 
+	        android:layout_width="0dip"
+	        android:layout_height="match_parent"
+	        android:layout_weight="0.1"></RelativeLayout>
+   	    <RelativeLayout 
+	        android:layout_width="0dip"
+	        android:layout_height="match_parent"
+	        android:layout_weight="0.8">
+		    
+   	        <LinearLayout 
+   	            android:layout_width="match_parent"
+   	            android:layout_height="wrap_content"
+   	            android:orientation="vertical"
+   	            android:paddingTop="56dp"
+   	            android:paddingLeft="24dp"
+   	            android:paddingRight="24dp">
+			    <ImageView 
+			        android:layout_width="wrap_content"
+			        android:layout_height="150dp"
+			        android:layout_marginBottom="24dp"
+			        android:layout_gravity="center_horizontal"
+			        android:src="@drawable/nourriture_transparent_logo"/>
+			    <LinearLayout 
+			        android:id="@+id/layout_login"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical">
+		    	    <TextView 
+		    	        android:layout_width="match_parent"
+		    	        android:layout_height="wrap_content"
+		    	        android:text="@string/username"
+		    	        android:textColor="@color/white"/>
+		    	    <EditText 
+		    	        android:id="@id/edittext_username"
+		    	        android:layout_width="match_parent"
+		    	        android:layout_height="wrap_content"
+		    	        android:background="@drawable/layer_list_custom_edittext"
+		    	        android:lines="1"
+		    	        android:layout_marginBottom="24dp"/>
+		    	    <TextView 
+		    	        android:layout_width="match_parent"
+		    	        android:layout_height="wrap_content"
+		    	        android:text="@string/password"
+		    	        android:textColor="@color/white"/>
+	   		    	<EditText 
+			  	        android:id="@id/edittext_password"
+			  	        android:layout_width="match_parent"
+			  	        android:layout_height="wrap_content"
+			  	        android:inputType="textPassword"
+		    	        android:background="@drawable/layer_list_custom_edittext"
+		    	        android:lines="1"
+		    	        android:layout_marginBottom="24dp"/>
+				    <ImageButton 
+				        android:id="@+id/btn_log_in"
+				        android:layout_width="wrap_content"
+				        android:layout_height="match_parent"
+				        android:layout_gravity="center_horizontal"
+				        android:background="@null"
+				        android:src="@drawable/selector_button_style_login"/>
+			    </LinearLayout>
+			    
+			    <ImageButton 
+			        android:id="@+id/btn_create_account"
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:layout_gravity="center_horizontal"
+			        android:background="@null"
+			        android:src="@drawable/selector_button_style_create_account"/>
+
+		    </LinearLayout>
+   		</RelativeLayout>
+		
+  	    <RelativeLayout 
+	        android:layout_width="0dip"
+	        android:layout_height="match_parent"
+	        android:layout_weight="0.1"></RelativeLayout>
+	</LinearLayout>
+	
+</LinearLayout>

@@ -1,0 +1,27 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.ingredients.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class IngredientsDetailActivity$$ViewBinder<T extends com.project_training.nourriture.ingredients.controller.IngredientsDetailActivity> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361871, "field 'ingredientDesc'");
+    target.ingredientDesc = finder.castView(view, 2131361871, "field 'ingredientDesc'");
+    view = finder.findRequiredView(source, 2131361872, "field 'ingredientDietaryGridview'");
+    target.ingredientDietaryGridview = finder.castView(view, 2131361872, "field 'ingredientDietaryGridview'");
+    view = finder.findRequiredView(source, 2131361869, "field 'toolBar'");
+    target.toolBar = finder.castView(view, 2131361869, "field 'toolBar'");
+    view = finder.findRequiredView(source, 2131361870, "field 'ingredientTitle'");
+    target.ingredientTitle = finder.castView(view, 2131361870, "field 'ingredientTitle'");
+  }
+
+  @Override public void unbind(T target) {
+    target.ingredientDesc = null;
+    target.ingredientDietaryGridview = null;
+    target.toolBar = null;
+    target.ingredientTitle = null;
+  }
+}

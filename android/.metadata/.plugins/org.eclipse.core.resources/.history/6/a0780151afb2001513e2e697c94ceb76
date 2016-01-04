@@ -1,0 +1,42 @@
+// Generated code from Butter Knife. Do not modify!
+package com.project_training.nourriture.products.controller;
+
+import android.view.View;
+import butterknife.ButterKnife.Finder;
+import butterknife.ButterKnife.ViewBinder;
+
+public class ProductsDetailActivity$$ViewBinder<T extends com.project_training.nourriture.products.controller.ProductsDetailActivity> implements ViewBinder<T> {
+  @Override public void bind(final Finder finder, final T target, Object source) {
+    View view;
+    view = finder.findRequiredView(source, 2131361877, "field 'titleProduct'");
+    target.titleProduct = finder.castView(view, 2131361877, "field 'titleProduct'");
+    view = finder.findRequiredView(source, 2131361869, "field 'toolBar'");
+    target.toolBar = finder.castView(view, 2131361869, "field 'toolBar'");
+    view = finder.findRequiredView(source, 2131361880, "field 'descProduct'");
+    target.descProduct = finder.castView(view, 2131361880, "field 'descProduct'");
+    view = finder.findRequiredView(source, 2131361879, "field 'countryProduct'");
+    target.countryProduct = finder.castView(view, 2131361879, "field 'countryProduct'");
+    view = finder.findRequiredView(source, 2131361878, "field 'priceProduct'");
+    target.priceProduct = finder.castView(view, 2131361878, "field 'priceProduct'");
+    view = finder.findRequiredView(source, 2131361882, "field 'calorieProduct'");
+    target.calorieProduct = finder.castView(view, 2131361882, "field 'calorieProduct'");
+    view = finder.findRequiredView(source, 2131361876, "field 'imgProduct'");
+    target.imgProduct = finder.castView(view, 2131361876, "field 'imgProduct'");
+    view = finder.findRequiredView(source, 2131361881, "field 'ingredientProduct'");
+    target.ingredientProduct = finder.castView(view, 2131361881, "field 'ingredientProduct'");
+    view = finder.findRequiredView(source, 2131361883, "field 'allergenProduct'");
+    target.allergenProduct = finder.castView(view, 2131361883, "field 'allergenProduct'");
+  }
+
+  @Override public void unbind(T target) {
+    target.titleProduct = null;
+    target.toolBar = null;
+    target.descProduct = null;
+    target.countryProduct = null;
+    target.priceProduct = null;
+    target.calorieProduct = null;
+    target.imgProduct = null;
+    target.ingredientProduct = null;
+    target.allergenProduct = null;
+  }
+}
